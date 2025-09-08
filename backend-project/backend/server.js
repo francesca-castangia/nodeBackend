@@ -12,5 +12,5 @@ app.use("/planets", planetsRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server avviato su http://localhost:${PORT}`);
+  console.log(`Server avviato su http://localhost:${PORT}`);
 });
