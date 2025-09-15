@@ -3,6 +3,9 @@ import express from "express";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
+import passport from "./passport.js";
+import userRoutes from "./routes/users.js";
+import planetRoutes from "./routes/planets.js";
 
 dotenv.config();
 
@@ -69,6 +72,13 @@ app.post("/users/login", (req, res) => {
     username: user.username,
   });
 });
+
+// ----------------------------------------
+app.use(express.json());
+app.use(passport.initialize());
+
+app.use("/users", userRoutes);
+app.use("/planets", planetRoutes);
 
 // ---------------- START SERVER ----------------
 const PORT = process.env.PORT || 3000;
